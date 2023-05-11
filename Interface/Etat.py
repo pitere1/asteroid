@@ -16,14 +16,14 @@ def afficherDemarrage():
     print("Demarrage")
     core.Draw.rect((255, 20, 255), ((1200 / 2) - 97, (800 / 2) - 50, 200, 100), 8)
     core.Draw.text((255, 20, 255), "PLAY", ((1200 / 2) - 80, (800 / 2) - 50),80)
-    core.Draw.text((150, 200, 20), "Ha Stéroïdes", (250, (800 / 4)-100), 200)
+    core.Draw.text((150, 200, 20), "Ha Stéroïdes", (300, (800 / 4)-100), 100)
 
     Pos_Souris = pygame.mouse.get_pos()
     Clicable = Rect(((1200 / 2) - 125, (800 / 2) - 50, 200, 100))
 
 
     if Clicable.collidepoint(Pos_Souris):
-        core.Draw.text((255, 20, 255), "PLAY", ((1200 / 2) - 80, (800 / 2) - 50),80)
+        core.Draw.text((255, 20, 20), "PLAY", ((1200 / 2) - 80, (800 / 2) - 50),80)
 
         if core.getMouseLeftClick():
             Pos_SourisPlay = core.getMouseLeftClick()

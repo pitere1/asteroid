@@ -1,42 +1,43 @@
 import random
 import time
 
+import core
 from pygame import Vector2
 
-import core
 from AsteroidPartie.asteroid import Asteroid
 
 
+
+
+
 def setup():
-    core.WINDOW_SIZE=[800,800]
+    core.WINDOW_SIZE=[1200,800]
     core.fps = 120
-    core.memory("mesProjectiles",[])
+    core.memory("MesSteroïdes",[])
 
 
 
 def creationAsteroid(position):
     ast = Asteroid()
-    ast.position = Vector2(position)
+    ast.position = Vector2(0,0)
     ast.acceleration = Vector2(random.uniform(-1, 1), random.uniform(-1, 1))
-    core.memory("mesProjectiles").append(ast)
+    core.memory("MesSteroïdes").append(ast)
+
+
 
 def run():
     core.cleanScreen()
-    if core.getMouseLeftClick():
-        if len (core.memory("mesProjectiles"))> 0:
-            if time.time() - core.memory("mesProjectiles")[-1].startTime > 0.2 :
-                creationProjectile(core.getMouseLeftClick())
+    print(len (core.memory("MesSteroïdes")))
 
-        else:
-            creationProjectile(core.getMouseLeftClick())
+    #if len (core.memory("MesSteroïdes"))> 0:
+    if core.getMouseLeftClick():#len(core.memory("MesSteroïdes")) < 4:
+        creationAsteroid([600,400])
 
-    for p in core.memory("mesProjectiles"):
-        if time.time() - p.startTime > p.durreeDeVie :
-            core.memory("mesProjectiles").remove(p)
 
-    for p in core.memory("mesProjectiles"):
+    for p in core.memory("MesSteroïdes"):
         p.deplacement()
         p.draw()
+        p.mapTP()
 
 
 
