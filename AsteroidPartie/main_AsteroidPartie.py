@@ -1,9 +1,6 @@
 import random
-import time
-
 import core
 from pygame import Vector2
-
 from AsteroidPartie.asteroid import Asteroid
 
 
@@ -14,7 +11,6 @@ def setup():
     core.WINDOW_SIZE=[1200,800]
     core.fps = 120
     core.memory("MesSteroïdes",[])
-
 
 
 def creationAsteroid(position):
@@ -29,7 +25,7 @@ def run():
     core.cleanScreen()
     print(len (core.memory("MesSteroïdes")))
 
-    #if len (core.memory("MesSteroïdes"))> 0:
+    #if len (core.memory("MesSteroïdes"))< 5:
     if core.getMouseLeftClick():#len(core.memory("MesSteroïdes")) < 4:
         creationAsteroid([600,400])
 
