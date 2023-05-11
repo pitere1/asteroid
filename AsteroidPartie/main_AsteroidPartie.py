@@ -25,8 +25,8 @@ def run():
     core.cleanScreen()
     print(len (core.memory("MesSteroïdes")))
 
-    #if len (core.memory("MesSteroïdes"))< 5:
-    if core.getMouseLeftClick():#len(core.memory("MesSteroïdes")) < 4:
+    if len (core.memory("MesSteroïdes"))< 5:
+    #if core.getMouseLeftClick():#len(core.memory("MesSteroïdes")) < 4:
         creationAsteroid([600,400])
 
 
