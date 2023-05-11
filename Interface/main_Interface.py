@@ -1,3 +1,5 @@
+from pygame import Vector2
+
 import core
 from Interface import Etat
 from Interface.Etat import afficherDemarrage, afficherJeu, afficherGameOver, afficherMenu
@@ -7,7 +9,7 @@ def setup():
     core.WINDOW_SIZE=[1200,800]
     core.fps = 120
     core.memory("etat", Etat.Etat.DEMARRAGE)
-
+    core.memory("textureciel",core.Texture("./ciel.jpg",Vector2(0,0),0,(1200,800)))
 
 def run():
     core.cleanScreen()

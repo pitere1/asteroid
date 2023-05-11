@@ -8,7 +8,7 @@ from projectile.projectiles import Projectile
 
 
 def setup():
-    core.WINDOW_SIZE=[800,800]
+    core.WINDOW_SIZE=[1200,800]
     core.fps = 120
     core.memory("mesProjectiles",[])
 
