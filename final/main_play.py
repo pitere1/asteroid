@@ -1,10 +1,13 @@
 import random
+import time
+
 from pygame import Vector2
 import core
 from AsteroidPartie.asteroid import Asteroid
 from Interface import Etat
 from Interface.Etat import afficherDemarrage, afficherJeu, afficherGameOver, afficherMenu
 from Vaisseau.vaisseau import Vaisseau
+from projectile.projectiles import Projectile
 
 
 def setup():
@@ -13,10 +16,13 @@ def setup():
     #interface
     core.memory("etat", Etat.Etat.DEMARRAGE)
     core.memory("textureciel",core.Texture("../asset/fciel.jpg",Vector2(0,0),0,(1200,800)))
+    core.memory("textureexpl",core.Texture("../asset/explosion.png",Vector2(0,0),0,(1200,800)))
     #asteroid
     core.memory("MesSteroïdes",[])
     #vaisseau
     core.memory("Mesvaisseau",[])
+    #projectile
+    core.memory("mesProjectiles",[])
 
 
 
@@ -36,6 +42,15 @@ def creationAsteroid(position):
     core.memory("MesSteroïdes").append(ast)
 
 
+#projectile
+def creationProjectile(position):
+    proj = Projectile()
+    proj.position = Vector2(position)
+    proj.acceleration = Vector2(random.uniform(-1, 1), random.uniform(-1, 1))
+    core.memory("mesProjectiles").append(proj)
+
+
+
 
 def run():
     core.cleanScreen()
@@ -47,8 +62,10 @@ def run():
 
     if core.memory('etat') == Etat.Etat.JEU:
         afficherJeu()
+
         # asteroid
         print(len(core.memory("MesSteroïdes")))
+
 
         if len(core.memory("MesSteroïdes")) < 5:
             # if core.getMouseLeftClick():#len(core.memory("MesSteroïdes")) < 4:
@@ -60,7 +77,6 @@ def run():
             p.mapTP()
 
         # vaisseau
-
         if len(core.memory("Mesvaisseau")) < 1:
             creationVaisseau()
 
@@ -69,7 +85,22 @@ def run():
             vaiss.draw()
             vaiss.mapTP()
 
+        # projectile
+        if core.getMouseLeftClick():
+            if len(core.memory("mesProjectiles")) > 0:
+                if time.time() - core.memory("mesProjectiles")[-1].startTime > 0.5:
+                    creationProjectile(core.getMouseLeftClick())
 
+            else:
+                creationProjectile(core.getMouseLeftClick())
+
+        for p in core.memory("mesProjectiles"):
+            if time.time() - p.startTime > p.durreeDeVie:
+                core.memory("mesProjectiles").remove(p)
+
+        for p in core.memory("mesProjectiles"):
+            p.deplacement()
+            p.draw()
 
     if core.memory('etat') == Etat.Etat.GAMEOVER:
         afficherGameOver()

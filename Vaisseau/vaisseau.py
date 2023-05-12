@@ -4,6 +4,7 @@ from operator import pos
 from pygame import Vector2
 
 import core
+from projectile.projectiles import Projectile
 
 
 class Vaisseau:
@@ -14,6 +15,7 @@ class Vaisseau:
         self.pos=Vector2(600, 400 )
         self.vmax=1
         self.accMax=1
+        self.dec=0.95
         self.texture=core.Texture("../asset/vaisseau.png",Vector2(self.pos))
 
 
@@ -33,8 +35,18 @@ class Vaisseau:
             #self.speed.scale_to_length(0)
             #self.acc.scale_to_length(0)
 
+        if self.acc.x < 0 :
+            self.speed.x *= self.dec
+        if self.acc.y < 0:
+            self.speed.y *= self.dec
+
+
+
+
         self.speed += self.acc
         self.pos += self.speed
+
+
 
         if self.acc.length() > self.accMax:
             self.acc.scale_to_length(self.accMax)

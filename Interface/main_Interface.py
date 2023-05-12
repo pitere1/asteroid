@@ -8,8 +8,9 @@ from Interface.Etat import afficherDemarrage, afficherJeu, afficherGameOver, aff
 def setup():
     core.WINDOW_SIZE=[1200,800]
     core.fps = 120
-    core.memory("etat", Etat.Etat.DEMARRAGE)
+    core.memory("etat", Etat.Etat.GAMEOVER)
     core.memory("textureciel",core.Texture("../asset/fciel.jpg",Vector2(0,0),0,(1200,800)))
+    core.memory("textureexpl",core.Texture("../asset/explosion.png",Vector2(0,0),0,(1100,700)))
 
 def run():
     core.cleanScreen()

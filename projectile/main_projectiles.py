@@ -24,7 +24,7 @@ def run():
     core.cleanScreen()
     if core.getMouseLeftClick():
         if len (core.memory("mesProjectiles"))> 0:
-            if time.time() - core.memory("mesProjectiles")[-1].startTime > 0.2 :
+            if time.time() - core.memory("mesProjectiles")[-1].startTime > 0.5 :
                 creationProjectile(core.getMouseLeftClick())
 
         else:

@@ -7,13 +7,13 @@ import core
 
 class Projectile:
     def __init__(self):
-        self.taille=5
+        self.taille=7
         self.vitesse=Vector2()
         self.acceleration=Vector2()
         self.position=Vector2()
-        self.durreeDeVie=3
+        self.durreeDeVie=2
         self.startTime=time.time()
-        self.texture=core.Texture("../asset/proj.png",Vector2(self.position))
+        #self.texture=core.Texture("../asset/proj.png",Vector2(self.position))
 
     def deplacement(self):
         self.vitesse+=self.acceleration
@@ -23,11 +23,11 @@ class Projectile:
         pass
 
     def draw(self):
-        core.Draw.circle((255,255,255),self.position,self.taille)
+        core.Draw.circle((255,10,0),self.position,self.taille)
 
-        self.texture.pos = Vector2(self.position.x - 50, self.position.y - 50)
+        #self.texture.pos = Vector2(self.position.x - 50, self.position.y - 50)
 
-        if not self.texture.ready:
-            self.texture.load()
+        #if not self.texture.ready:
+         #   self.texture.load()
 
-        self.texture.show()
+        #self.texture.show()

@@ -17,6 +17,12 @@ def afficherDemarrage():
 
     print("Demarrage")
 
+    if not core.memory("textureciel").ready:
+        core.memory("textureciel").load()
+    core.memory("textureciel").box = True  # Display box
+    core.memory("textureciel").show()
+
+
     core.Draw.rect((255, 20, 255), ((1200 / 2) - 97, (800 / 2) - 50, 200, 100), 8)
     core.Draw.text((255, 20, 255), "PLAY", ((1200 / 2) - 80, (800 / 2) - 50),80)
     core.Draw.text((150, 200, 20), "Ha Stéroïdes", (300, (800 / 4)-100), 100)
@@ -50,13 +56,18 @@ def afficherJeu():
 def afficherGameOver():
     print("GameOver")
 
-    core.Draw.text((255, 20, 255), "GAME OVER", ((1200 / 2) - 80, (800 / 8) - 50), 80)
+    if not core.memory("textureexpl").ready:
+        core.memory("textureexpl").load()
+    core.memory("textureexpl").box = True  # Display box
+    core.memory("textureexpl").show()
 
-    core.Draw.rect((255, 20, 255), ((1200 / 2) - 97, (800 / 2) - 50, 330, 100), 8)
-    core.Draw.text((255, 20, 255), "RESTART", ((1200 / 2) - 80, (800 / 2) - 50),80)
+    core.Draw.text((100, 5, 0), "GAME OVER", ((1200 / 2) - 80, (800 / 8) - 50), 80)
 
-    core.Draw.rect((255, 20, 255), ((1200 / 2) - 97, (800 / 4) - 50, 330, 75), 8)
-    core.Draw.text((255, 20, 255), "DEMARRAGE", ((1200 / 2) - 80, (800 / 4) - 50), 55)
+    core.Draw.rect((100, 5, 0), ((1200 / 2) - 97, (800 / 2) - 50, 330, 100), 8)
+    core.Draw.text((100, 5, 0), "RESTART", ((1200 / 2) - 80, (800 / 2) - 50),80)
+
+    core.Draw.rect((100, 5, 0), ((1200 / 2) - 97, (800 / 4) - 50, 330, 75), 8)
+    core.Draw.text((100, 5, 0), "DEMARRAGE", ((1200 / 2) - 80, (800 / 4) - 50), 55)
 
 
     Pos_Sourisgo = pygame.mouse.get_pos()
@@ -66,7 +77,7 @@ def afficherGameOver():
 
 
     if Clicablerestart.collidepoint(Pos_Sourisgo):
-        core.Draw.text((255, 20, 20), "RESTART", ((1200 / 2) - 80, (800 / 2) - 50),80)
+        core.Draw.text((200, 10, 0), "RESTART", ((1200 / 2) - 80, (800 / 2) - 50),80)
 
         if core.getMouseLeftClick():
             Pos_Sourisgo = core.getMouseLeftClick()
@@ -77,7 +88,7 @@ def afficherGameOver():
 
 
     if Clicabledemarrage.collidepoint(Pos_Sourisgo):
-        core.Draw.text((255, 20, 0), "DEMARRAGE", ((1200 / 2) - 80, (800 / 4) - 50), 55)
+        core.Draw.text((200, 10, 0), "DEMARRAGE", ((1200 / 2) - 80, (800 / 4) - 50), 55)
 
         if core.getMouseLeftClick():
             Pos_Sourisgo = core.getMouseLeftClick()
