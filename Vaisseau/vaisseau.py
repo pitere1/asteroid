@@ -8,35 +8,52 @@ import core
 
 class Vaisseau:
     def __init__(self):
-        self.taille=20
+        self.taille=30
         self.speed=Vector2()
         self.acc=Vector2()
-        self.pos=Vector2()
-        #self.texture=core.Texture("../asset/pngwing.png",Vector2(self.position))
+        self.pos=Vector2(600, 400 )
+        self.vmax=1
+        self.accMax=1
+        self.texture=core.Texture("../asset/vaisseau.png",Vector2(self.pos))
 
 
 
-    def deplacement(self):
-        self.speed += self.acc
-        self.pos += self.speed
+
 
     def move(self):
         if core.getKeyPressList("z"):
-                self.acc = self.acc.y-10
+            self.acc.y -= 1
         if core.getKeyPressList("s"):
-                self.acc = self.acc.y+10
+            self.acc.y += 1
         if core.getKeyPressList("q"):
-                self.acc = self.acc.x-10
+            self.acc.x -= 1
         if core.getKeyPressList("d"):
-                self.acc = self.acc.x+10
+            self.acc.x += 1
+        #if core.getKeyPressList("SPACE"):
+            #self.speed.scale_to_length(0)
+            #self.acc.scale_to_length(0)
 
+        self.speed += self.acc
+        self.pos += self.speed
+
+        if self.acc.length() > self.accMax:
+            self.acc.scale_to_length(self.accMax)
+
+        if self.speed.length() > self.vmax:
+            self.speed.scale_to_length(self.vmax)
 
     def collision(self):
         pass
 
     def draw(self):
 
-        core.Draw.circle((255,255,255),self.position,self.taille)
+        #core.Draw.circle((255,255,255),self.pos,self.taille)
+        self.texture.pos = Vector2(self.pos.x - 50, self.pos.y - 50)
+
+        if not self.texture.ready:
+            self.texture.load()
+
+        self.texture.show()
 
 
     def mapTP(self):

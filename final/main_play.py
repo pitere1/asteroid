@@ -4,6 +4,7 @@ import core
 from AsteroidPartie.asteroid import Asteroid
 from Interface import Etat
 from Interface.Etat import afficherDemarrage, afficherJeu, afficherGameOver, afficherMenu
+from Vaisseau.vaisseau import Vaisseau
 
 
 def setup():
@@ -14,10 +15,16 @@ def setup():
     core.memory("textureciel",core.Texture("../asset/fciel.jpg",Vector2(0,0),0,(1200,800)))
     #asteroid
     core.memory("MesSteroïdes",[])
-    #
+    #vaisseau
+    core.memory("Mesvaisseau",[])
 
-#interface
 
+
+
+#vaisseau
+def creationVaisseau():
+    vais = Vaisseau()
+    core.memory("Mesvaisseau").append(vais)
 
 
 
@@ -52,11 +59,28 @@ def run():
             p.draw()
             p.mapTP()
 
+        # vaisseau
+
+        if len(core.memory("Mesvaisseau")) < 1:
+            creationVaisseau()
+
+        for vaiss in core.memory("Mesvaisseau"):
+            vaiss.move()
+            vaiss.draw()
+            vaiss.mapTP()
+
+
+
     if core.memory('etat') == Etat.Etat.GAMEOVER:
         afficherGameOver()
 
     if core.memory('etat') == Etat.Etat.MENU:
         afficherMenu()
+
+
+
+
+
 
 
 

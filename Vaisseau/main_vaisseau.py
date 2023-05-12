@@ -14,9 +14,6 @@ def setup():
 
 def creationVaisseau():
     vais = Vaisseau()
-    vais.position = Vector2(500, 400)
-    vais.acceleration = Vector2(0,0)
-    vais.speed = Vector2(0,0)
     core.memory("Mesvaisseau").append(vais)
 
 
@@ -25,13 +22,13 @@ def creationVaisseau():
 def run():
     core.cleanScreen()
 
-    print(len(core.memory("Mesvaisseau")))
+    #print(len(core.memory("Mesvaisseau")))
 
     if len (core.memory("Mesvaisseau"))< 1:
         creationVaisseau()
 
     for vaiss in core.memory("Mesvaisseau"):
-        vaiss.deplacement()
+        vaiss.move()
         vaiss.draw()
         vaiss.mapTP()
 

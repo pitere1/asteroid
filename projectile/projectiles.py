@@ -13,6 +13,7 @@ class Projectile:
         self.position=Vector2()
         self.durreeDeVie=3
         self.startTime=time.time()
+        self.texture=core.Texture("../asset/proj.png",Vector2(self.position))
 
     def deplacement(self):
         self.vitesse+=self.acceleration
@@ -23,3 +24,10 @@ class Projectile:
 
     def draw(self):
         core.Draw.circle((255,255,255),self.position,self.taille)
+
+        self.texture.pos = Vector2(self.position.x - 50, self.position.y - 50)
+
+        if not self.texture.ready:
+            self.texture.load()
+
+        self.texture.show()
