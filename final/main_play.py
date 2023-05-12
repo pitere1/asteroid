@@ -1,7 +1,5 @@
 import random
-import pygame
 from pygame import Vector2
-from pygame.rect import Rect
 import core
 from AsteroidPartie.asteroid import Asteroid
 from Interface import Etat

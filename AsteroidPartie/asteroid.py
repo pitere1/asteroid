@@ -7,7 +7,7 @@ import core
 class Asteroid:
     def __init__(self):
         self.taille=47
-        self.vel= Vector2(random.uniform(-2,2),random.uniform(-2,2))
+        self.vel= Vector2(random.uniform(-1,1),random.uniform(-1,1))
         self.acc=Vector2()
         self.position=Vector2()
         self.texture=core.Texture("../asset/pngwing.png",Vector2(self.position))

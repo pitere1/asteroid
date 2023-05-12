@@ -111,6 +111,8 @@ def getkeyPressValue():
 def getkeyRelease():
     return keyReleaseValue
 
+def getMouseLocation():
+    return pygame.mouse.get_pos()
 
 def setup():
     pygame.init()
@@ -213,7 +215,7 @@ def main(setupf, runf):
 
             if hasattr(event, 'key'):
 
-                keyPressList = pygame.key.get_pressed()
+                keyPressList = [pygame.key.get_pressed()[i] for i in range(0,len(pygame.key.get_pressed()))]
 
                 if keyPressValue:
                     keyReleaseValue = event.key
@@ -248,7 +250,8 @@ class Draw:
             pygame.draw.circle(shape_surf, color, (radius, radius), radius, width)
             core.screen.blit(shape_surf, target_rect)
         else:
-            pygame.draw.circle(core.screen, color, center, radius, width)
+            if center[0]>0:
+                pygame.draw.circle(core.screen, color, center, radius, width)
 
     def polyline(color, points, width=0):
         if len(color) > 3:
