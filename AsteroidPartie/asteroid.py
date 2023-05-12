@@ -10,7 +10,7 @@ class Asteroid:
         self.vel= Vector2(random.uniform(-2,2),random.uniform(-2,2))
         self.acc=Vector2()
         self.position=Vector2()
-        self.texture=core.Texture("./pngwing.png",Vector2(self.position))
+        self.texture=core.Texture("../asset/pngwing.png",Vector2(self.position))
 
 
     def deplacement(self):
