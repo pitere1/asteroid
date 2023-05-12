@@ -84,6 +84,7 @@ def run():
             vaiss.move()
             vaiss.draw()
             vaiss.mapTP()
+            vaiss.collision()
 
         # projectile
         if core.getMouseLeftClick():
@@ -101,6 +102,8 @@ def run():
         for p in core.memory("mesProjectiles"):
             p.deplacement()
             p.draw()
+
+
 
     if core.memory('etat') == Etat.Etat.GAMEOVER:
         afficherGameOver()
