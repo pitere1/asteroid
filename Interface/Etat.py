@@ -61,7 +61,7 @@ def afficherGameOver():
     core.memory("textureexpl").box = True  # Display box
     core.memory("textureexpl").show()
 
-    core.Draw.text((100, 5, 0), "GAME OVER", ((1200 / 2) - 80, (800 / 8) - 50), 80)
+    core.Draw.text((100, 5, 0), "GAME OVER", ((1200 / 2) - 80, (700 / 8) - 50), 80)
 
     core.Draw.rect((100, 5, 0), ((1200 / 2) - 97, (800 / 2) - 50, 330, 100), 8)
     core.Draw.text((100, 5, 0), "RESTART", ((1200 / 2) - 80, (800 / 2) - 50),80)
