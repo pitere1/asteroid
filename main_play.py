@@ -6,7 +6,7 @@ from pygame import Vector2
 import core
 from AsteroidPartie.asteroid import Asteroid
 from Interface import Etat
-from Interface.Etat import afficherDemarrage, afficherJeu, afficherMenu, afficherGameOver
+from Interface.Etat import afficherDemarrage, afficherJeu, afficherGameOver, afficherMenu
 from Vaisseau.vaisseau import Vaisseau
 from projectile.projectiles import Projectile
 

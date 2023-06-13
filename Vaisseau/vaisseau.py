@@ -16,7 +16,7 @@ class Vaisseau:
         self.vmax=1
         self.accMax=1
         self.dec=0.95
-        self.texture=core.Texture("../asset/vaisseau.png",Vector2(self.pos))
+        self.texture=core.Texture("./asset/vaisseau.png",Vector2(self.pos))
 
 
 
